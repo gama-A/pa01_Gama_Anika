@@ -15,7 +15,7 @@ Card::Card(char s, char v){
 }
 
 // Card equality operator
-bool Card::Card operator==(Card& a){
+bool Card::Card operator==(Card* a){
     if((a.suit == suit) && (a.value == value)){
         return true;
     }
@@ -33,7 +33,7 @@ CardList::~CardList(){
 }
 
 // returns true if card is in the list, false if not
-bool CardList::findCard(Card& c) {
+bool CardList::findCard(Card* c) {
     Card *p = deck;
     while(p){
         if (p == c){
@@ -45,7 +45,7 @@ bool CardList::findCard(Card& c) {
 }
 
 // appends card to the card hand
-void CarList::append(Card& c) {
+void CarList::append(Card* c) {
     Card *p = deck;
     if(!p) {
         Card add = new Card(c);
@@ -58,7 +58,7 @@ void CarList::append(Card& c) {
 }
 
 // removes card in the list
-void CardList::remove(Card& c) {
+void CardList::remove(Card* c) {
     Card *p = deck;
     Card *q = deck;
     if(p == c){
