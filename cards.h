@@ -49,7 +49,19 @@ public:
 
     void clear();
     // clears list at the end
-    
+
+    friend ostream& operator<<(ostream& os, const CardList& cards) {
+        Card *c;
+        c = cards.deck;
+        while(c){
+            os << c << endl;
+            c = c->next;
+        }
+        return os;
+    }
+    // print overload for card list (helps with tests too)
+   
+private:
     Card *deck;
 };
 

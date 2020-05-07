@@ -48,6 +48,19 @@ void test_destructor(){
   END_TEST("test_destructor");
 }
 
+void test_remove(){
+  START_TEST("test_remove");
+  test_remove_center_card();
+  END_TEST("test_remove");
+}
+
+void test_search(){
+  START_TEST("test_search");
+  test_card_found();
+  test_card_not_found();
+  END_TEST("test_search");
+}
+
 // Tests for card boolean
 void test_card_operator_double_true(){
   Card c1("d", "9");
@@ -66,17 +79,15 @@ void test_card_operator_double_false(){
 // Test for creating a CardList
 void test_constructor_empty(){
   CardList hand1;
-  bool result = (hand1 == NULL);
-  assertEqualsBool(true, result, "test_constructor_empty");
+  cout << hand1;
 }
 
 // Tests for the append function
 void test_append_empty_list(){
   Card c1("h","2");
-  Card *p = c1;
   CardList hand1;
   hand1.append(c1);
-  assertEqualsCard(*p, hand1.deck, "test_append_empty_list");
+  cout << hand1 << endl;
 }
 
 void test_append_single_element_list(){ 
@@ -84,30 +95,55 @@ void test_append_single_element_list(){
   Card c1("h","2");
   Card c2("s","a");
   Card c3("d","5");
-  CardList hand1, hand2; 
+  CardList hand1;
   hand1.append(c1);
   hand1.append(c2);
   hand1.append(c3);
-  //assertEqualsCard(c2, hand1.head, "test_append_single_element_list");
-  //head1.head needs to be changed to the second element from CardList (aka c2)
+  cout << hand1 << endl;
+}
+
+// Tests destructors clear function
+void test_destructor_clear(){
+  Card c1("h","2");
+  Card c2("s","a");
+  Card c3("d","5");
+  CardList hand1;
+  hand1.append(c1);
+  hand1.append(c2);
+  hand1.append(c3);
+  hand1.clear();
+  cout << "    RUN IN Valgrind FOR Destructor    ";
 }
 
 void test_remove_center_card(){
   Card c1("c", "5");
-  Card c2("d" "7");
+  Card c2("d","7");
   Card c3("h","q");
-  CardList hand1
+  CardList hand1;
   hand1.append(c1);
   hand1.append(c2);
-  assertEqualsCard(c2, hand1.head, "test_remove");
+  cout << hand1 << endl;
 }
 
-void test_search(){
-  /*  
-  Card c1 = new Card("s", "6");
-  Card c2 = new Card("h", "6");
+void test_card_found(){
+  Card c1("s", "6");
+  Card c2("h", "6");
   CardList hand1; 
   hand1.append(c1); 
   hand1.append(c2);
-  */ 
+  bool result = hand1.findCard(c2);
+  assertEqualsBool(true, result, "test_card_found");
 }
+
+void test_card_not_found(){
+  Card c1("s","6");
+  Card c2("h","6");
+  Card c3("d","9");
+  CardList hand1;
+  hand1.append(c1);
+  hand1.append(c3);
+  bool result = hand1.findCard(c2);
+  assertEqualsBool(false, result, "test_card_not_found");
+}
+
+
