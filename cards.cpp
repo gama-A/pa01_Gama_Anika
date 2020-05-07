@@ -87,13 +87,11 @@ void CardList::remove(int index) {
 
 // clears list of cards
 void CardList::clear() {
-    Card *p = deck;
-    Card *q;
-    q = p;
-    while(p) {
-        p = p->next;
-        delete q;
-        q = p;
+    Card *p;
+    while(deck){
+        p = deck->next;
+        delete p;
+        deck = p;
     }
 }
 

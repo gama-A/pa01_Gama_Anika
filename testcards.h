@@ -41,6 +41,7 @@ void test_destructor_clear();
 
 // Test for removing card from deck
 void test_remove_center_card();
+void test_remove_first_card();
 
 // Test for finding card
 void test_card_found();
