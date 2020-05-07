@@ -54,7 +54,7 @@ public:
         Card *c;
         c = cards.deck;
         while(c){
-            os << c << endl;
+            os << *c << endl;
             c = c->next;
         }
         return os;

@@ -88,7 +88,7 @@ void test_card_operator_double_false(){
 void test_card_cout(){
   string testname = "Card cout overload";
   Card c1("d","9");
-  cout << c1 << endl;
+  cout << c1;
   cout << testname << endl;
 }
 
@@ -97,7 +97,7 @@ void test_cardlist_cout(){
   Card c1("d","9");
   CardList hand1;
   hand1.append(c1);
-  cout << hand1 << endl;
+  cout << hand1;
   cout << testname << endl;
 }
 
