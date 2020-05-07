@@ -89,9 +89,8 @@ void test_equal_single_element_list(){
 }
 
 void test_card_operator_double_equal(){
-  // Test to check if == is overloaded for card
+  Card c1 = new Card ("d", "9");
+  Card c2 = new Card ("d", "9");
+  assertEqualsCard(c1, c2, "test_card_operator_double_equal");
+
 }
-
-
-
-
