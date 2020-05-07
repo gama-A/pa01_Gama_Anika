@@ -51,14 +51,6 @@ void test_equal(){
 
 }
 
-void test_card_bool1(){
-  // STUB
-}
-
-void test_card_bool2(){
-  // STUB
-}
-
 void test_append_empty_list(){
   Card c1 = new Card("h","2");
   Card *p = c1;
@@ -71,7 +63,11 @@ void test_append_single_element_list(){
   string testname = "Case 2: testing non-empty list";
   Card c1 = new Card("h","2");
   Card c2 = new Card("s","a");
-  CardList hand1(c1)
+  CardList hand1; 
+  hand1.append(c1);
+  hand1.append(c2);
+  //assertEqualsCard(c2, hand1.head, "test_append_single_element_list");
+  //head1.head needs to be changed to the second element from CardList (aka c2)
 }
 void test_equal_empty_list(){ 
   string testname = "case 0: [], []";
@@ -83,8 +79,10 @@ void test_equal_single_element_list(){
   string testname = "case 1: {'h 10'}, {'h 10'}";
   Card c1 = new Card ("h", "10"); 
   Card c2 = new Card ("h", "10"); 
-  CardList hand1(c1);
-  CardList hand2(c2);
+  CardList hand1;
+  hand1.append(c1); 
+  CardList hand2;
+  hand2.append(c2);
   assertEqualsCard(hand1.head, hand2.head, "test_equal_single_element_list"); 
 }
 
@@ -93,4 +91,24 @@ void test_card_operator_double_equal(){
   Card c2 = new Card ("d", "9");
   assertEqualsCard(c1, c2, "test_card_operator_double_equal");
 
+}
+
+void test_remove(){
+  Card c1 = new Card("c", "5");
+  CardList hand1;
+  hand1.append(c1);
+  hand1.remove(c1);
+  Card c2 = new Card("c" "7");
+  hand1.append(c2);
+  assertEqualsCard(c2, hand1.head, "test_remove");
+}
+
+void test_search(){
+  /*  
+  Card c1 = new Card("s", "6");
+  Card c2 = new Card("h", "6");
+  CardList hand1; 
+  hand1.append(c1); 
+  hand1.append(c2);
+  */ 
 }
