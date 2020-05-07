@@ -44,6 +44,7 @@ int CardList::findCard(Card& c) {
         p = p->next;
         count = count + 1;
     }
+    count = 0;
     return count;
 }
 
@@ -69,6 +70,7 @@ void CardList::remove(int index) {
     p = deck;
     q = deck;
     if(index == 1){
+        q = q->next;
         delete p;
         deck = q;
         return;
@@ -90,7 +92,7 @@ void CardList::clear() {
     Card *p;
     while(deck){
         p = deck->next;
-        delete p;
+        delete deck;
         deck = p;
     }
 }

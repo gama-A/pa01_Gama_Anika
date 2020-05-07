@@ -48,11 +48,11 @@ void test_card_found();
 void test_card_not_found();
 
 void START_TEST(string testname){
-  cout<<"Start "<<testname<<endl;
+  cout<<"-----Start "<<testname<<"-----"<<endl;
 }
 
 void END_TEST(string testname) {
-  cout<<"End "<<testname<<endl<<endl;
+  cout<<"-----End "<<testname<<"-----"<<endl;
 }
 
 void assertEquals(string expected, string actual, string testDescription){

@@ -108,7 +108,7 @@ void test_cardlist_cout(){
 // Test for creating a CardList
 void test_constructor_empty(){
   CardList hand1;
-  cout << hand1;
+  cout << hand1 << "If blank, constructor works\n";
 }
 
 // Tests for the append function
@@ -117,7 +117,7 @@ void test_append_empty_list(){
   Card c1("s","a");
   CardList hand1;
   hand1.append(c1);
-  cout << testname << hand1 << endl;
+  cout << testname << hand1;
 }
 
 void test_append_single_element_list(){ 
@@ -129,7 +129,7 @@ void test_append_single_element_list(){
   hand1.append(c1);
   hand1.append(c2);
   hand1.append(c3);
-  cout << testname << hand1 << endl;
+  cout << testname << hand1;
 }
 
 // Tests destructors clear function
@@ -174,24 +174,29 @@ void test_remove_first_card(){
 }
 
 void test_card_found(){
-  Card c1("s", "6");
-  Card c2("h", "6");
-  Card c3("d", "9");
+  Card c1("s", "a");
+  Card c2("h", "q");
+  Card c3("c", "k");
+  Card *n = new Card("h","q");
   CardList hand1;
-  hand1.append(c1); 
+  hand1.append(c1);
   hand1.append(c2);
   hand1.append(c3);
-  assertEquals(2, hand1.findCard(c2), "test_card_found");
+  assertEquals(2, hand1.findCard(*n), "test_card_found");
+  delete n;
 }
 
 void test_card_not_found(){
-  Card c1("s","6");
-  Card c2("h","6");
-  Card c3("d","9");
+  Card c1("s","a");
+  Card c2("h","q");
+  Card c3("c","k");
+  Card *n = new Card("d","0");
   CardList hand1;
   hand1.append(c1);
+  hand1.append(c2);
   hand1.append(c3);
-  assertEquals(0, hand1.findCard(c2), "test_card_not_found");
+  assertEquals(0, hand1.findCard(*n), "test_card_not_found");
+  delete n;
 }
 
 
