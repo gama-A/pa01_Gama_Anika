@@ -1,2 +1,1 @@
-# pa01_Gama_Anika
-Repo to finish and upload pa01
+# pa01_gama-A.
