@@ -15,8 +15,8 @@ Card::Card(char s, char v){
 }
 
 // Card equality operator
-bool Card::Card operator==(Card* a){
-    if((a.suit == suit) && (a.value == value)){
+bool Card::operator==(Card const& a){
+    if((a.suit == this.suit) && (a.value == this.value)){
         return true;
     }
     return false;
@@ -45,10 +45,10 @@ bool CardList::findCard(Card* c) {
 }
 
 // appends card to the card hand
-void CarList::append(Card* c) {
+void CardList::append(Card& c) {
     Card *p = deck;
     if(!p) {
-        Card add = new Card(c);
+        Card add = new Card(c.suit, c.value);
         p = add;
     }
     else {
@@ -81,7 +81,7 @@ void CardList::remove(Card* c) {
 void clear() {
     Card *p, *q;
     p = deck;
-    q = p
+    q = p;
     while(p) {
         p = p->next;
         delete q;

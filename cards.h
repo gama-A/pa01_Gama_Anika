@@ -18,7 +18,7 @@ public:
     Card(char s, char v);
     // Card constructor
 
-    bool operator==(Card& a);
+    bool operator==(Card const& a);
     // equality overload operator
 
     friend ostream& operator<<(ostream& os, const Card& c) {
@@ -37,14 +37,14 @@ public:
     ~CardList();
     // card hand destructor
 
-    bool findCard(Card& c);
+    bool findCard(Card* c);
     // returns true if card exists in deck, false if not
 
-    void append(Card& c);
+    void append(Card* c);
     // add card to the end hand of the player
     // If the card hand is empty the card is added first
 
-    void remove(Card& c);
+    void remove(Card* c);
     // removes card in the list, used with function find Card
 
     void clear();
