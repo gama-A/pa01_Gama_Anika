@@ -33,15 +33,18 @@ CardList::~CardList(){
 }
 
 // returns true if card is in the list, false if not
-bool CardList::findCard(Card& c) {
+int CardList::findCard(Card& c) {
     Card *p = deck;
+    int count = 0;
     while(p){
         if (*p == c){
-            return true;
+            count = count + 1;
+            return count;
         }
         p = p->next;
+        count = count + 1;
     }
-    return false;
+    return count;
 }
 
 // appends card to the card hand
@@ -56,29 +59,25 @@ void CardList::append(Card& c) {
 }
 
 // removes card in the list
-void CardList::remove(Card& c) {
+void CardList::remove(int index) {
     Card *p, *q;
     p = deck;
     q = deck;
-    while(!(*p == c)){
-        p = p->next;
-    }
-    if(p->next == NULL){
+    if(index == 1){
         delete p;
+        deck = q;
         return;
-    }else {
-        if(p == deck){
-            q = q->next;
-            delete p;
-            deck = q;
-        }else {
-            while(q->next != p){
-                q = q->next;
-            }
-            q->next = p->next;
-            delete p;
-        }
     }
+    int i = 1;
+    while(i < index){
+        p = p->next;
+        i++;
+    }
+    while(q->next != p){
+        q = q->next;
+    }
+    q->next = p->next;
+    delete p;
 }
 
 // clears list of cards

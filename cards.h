@@ -37,15 +37,15 @@ public:
     ~CardList();
     // card hand destructor
 
-    bool findCard(Card& c);
-    // returns true if card exists in deck, false if not
+    int findCard(Card& c);
+    // returns index of card exists, 0 if not in deck
 
     void append(Card& c);
     // add card to the end hand of the player
     // If the card hand is empty the card is added first
 
-    void remove(Card& c);
-    // removes card in the list, used with function find Card
+    void remove(int index);
+    // removes card at a given index
 
     void clear();
     // clears list at the end

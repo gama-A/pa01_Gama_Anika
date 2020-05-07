@@ -15,6 +15,7 @@ void runAll();
 void test_constructor();   // 1 test
 void test_append();        // 2 tests: empty list and not empty list 
 void test_card();
+void test_cout();
 void test_destructor();    // 1 test
 void test_remove();        // 2 tests
 void test_search();        // 2 tests: 1 with card in list and one without
@@ -30,6 +31,10 @@ void test_append_single_element_list();
 // Test cases for card boolean
 void test_card_operator_double_true();
 void test_card_operator_double_false();
+
+// Tests for card and card list cout
+void test_card_cout();
+void test_cardlist_cout();
 
 // Test for destructor
 void test_destructor_clear();
