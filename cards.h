@@ -36,16 +36,29 @@ public:
 
     ~CardList();
     // card hand destructor
+    
+    setName(string name);
+    // Pre: CardList has no name set
+    // Post: sets the name of the card list
+
+    Card getCardDeck() const;
+    // returns the node deck (helpful in the game implementation and findCard
+
+    getName() const;
+    // Pre: CardList has a name
+    // Post: returns of the name of the player with that deck
 
     int findCard(Card& c);
-    // returns index of card exists, 0 if not in deck
+    // Pre: CardList is a valid list (if not returns 0) and c is a reference to a card
+    // Post: returns the index of the card, 0 if not in deck
 
     void append(Card& c);
-    // add card to the end hand of the player
-    // If the card hand is empty the card is added first
+    // Pre: CardList can be empty or not, c is a valid card
+    // Post: appends the card c to the end of the CardList
 
     void remove(int index);
-    // removes card at a given index
+    // Pre: CardList is not empty and index is greater than 0
+    // Post: removes the card at the given index
 
     void clear();
     // clears list at the end
@@ -63,6 +76,7 @@ public:
    
 private:
     Card *deck;
+    string name;
 };
 
 #endif
