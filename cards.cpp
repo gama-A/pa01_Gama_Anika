@@ -25,11 +25,27 @@ bool Card::operator==(Card const& a){
 // Constructor (list/deck)
 CardList::CardList(){
     deck = NULL;
+    player = "";
 }
 
 // Destructor
 CardList::~CardList(){
     clear();
+}
+
+// sets the name of the player
+void CardList::setName(string name){
+    player = name;
+}
+
+// returns the starting node of the card deck
+Card* CardList::getCardDeck() const{
+    return deck;
+}
+
+// returns the name of the player with the deck
+string CardList::getName() const{
+    return player;
 }
 
 // returns true if card is in the list, false if not

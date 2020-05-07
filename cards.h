@@ -37,14 +37,14 @@ public:
     ~CardList();
     // card hand destructor
     
-    setName(string name);
+    void setName(string name);
     // Pre: CardList has no name set
     // Post: sets the name of the card list
 
-    Card getCardDeck() const;
-    // returns the node deck (helpful in the game implementation and findCard
+    Card* getCardDeck() const;
+    // returns the pointer node to the deck (helpful in the game implementation and findCard
 
-    getName() const;
+    string getName() const;
     // Pre: CardList has a name
     // Post: returns of the name of the player with that deck
 
@@ -76,7 +76,7 @@ public:
    
 private:
     Card *deck;
-    string name;
+    string player;
 };
 
 #endif

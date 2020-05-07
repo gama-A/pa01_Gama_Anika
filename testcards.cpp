@@ -15,8 +15,10 @@ int main(){
 void runAll(){
   test_card();
   test_constructor();
+  test_name();
   test_cout();
   test_append();
+  test_getCard();
   test_destructor();
   test_remove();
   test_search();
@@ -44,12 +46,24 @@ void test_constructor(){
   END_TEST("test_constructor");
 }
 
+void test_name(){
+  START_TEST("test_name");
+  test_setter_and_getter_name();
+  END_TEST("test_name");
+}
+
 void test_append(){
   START_TEST("test_append");
   test_append_empty_list();
   test_append_single_element_list();
   END_TEST("test_append");
 
+}
+
+void test_getCard(){
+  START_TEST("test_getCard");
+  test_getCardDeck();
+  END_TEST("test_getCard");
 }
 
 void test_destructor(){
@@ -128,6 +142,13 @@ void test_constructor_empty(){
   cout << hand1 << "If blank, constructor works\n";
 }
 
+// Tests for setting and getting the name of player
+void test_setter_and_getter_name(){
+  CardList hand1;
+  hand1.setName("Alice");
+  assertEquals("Alice", hand1.getName(), "test_setter_and_getter");
+}
+
 // Tests for the append function
 void test_append_empty_list(){
   string testname = "Case 1: testing empty card list\n";
@@ -149,6 +170,18 @@ void test_append_single_element_list(){
   cout << testname << hand1;
 }
 
+// Tests for getting the first card in the deck
+void test_getCardDeck(){
+  Card c1("s","a");
+  Card c2("h","q");
+  Card *n = new Card("s","a");
+  CardList hand1;
+  hand1.append(c1);
+  hand1.append(c2);
+  assertEqualsCard(n, hand1.getCardDeck(), "test_getCardDeck");
+  delete n;
+}
+
 // Tests destructors clear function
 void test_destructor_clear(){
   Card c1("s","a");
@@ -159,7 +192,7 @@ void test_destructor_clear(){
   hand1.append(c2);
   hand1.append(c3);
   hand1.clear();
-  cout << "    RUN IN Valgrind FOR Destructor    ";
+  cout << "    RUN IN Valgrind FOR Destructor   \n";
 }
 
 // Tests remove function

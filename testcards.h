@@ -12,21 +12,29 @@
 
 using namespace std;
 void runAll();
-void test_constructor();   // 1 test
-void test_append();        // 2 tests: empty list and not empty list 
+void test_constructor();
+void test_name();
+void test_append();
+void test_getCard();
 void test_card();
 void test_cout();
-void test_destructor();    // 1 test
-void test_remove();        // 2 tests
-void test_search();        // 2 tests: 1 with card in list and one without
+void test_destructor();
+void test_remove();
+void test_search();
 
 
 // Test for creating CardList
 void test_constructor_empty();
 
+// Tests for setting and getting name
+void test_setter_and_getter_name();
+
 // Tests for appending Cards
 void test_append_empty_list();
 void test_append_single_element_list();
+
+// Tests for getting the first deck card
+void test_getCardDeck();
 
 // Test cases for card boolean
 void test_card_operator_double_true();
@@ -74,8 +82,8 @@ void assertEquals(int expected, int actual, string testDescription){
   }
 }
 
-void assertEqualsCard(Card *expected, Card *actual, string testDescription){
-  if (expected == actual) {
+void assertEqualsCard(Card* expected, Card* actual, string testDescription){
+  if (*expected == *actual) {
     cout<<"PASSED " << endl;
   } else {
     cout<< "  FAILED: "<< testDescription << endl <<"   Expected: "<< expected << " Actual: " << actual << endl;
