@@ -26,6 +26,8 @@ void test_card(){
   START_TEST("test_card");
   test_card_operator_double_true();
   test_card_operator_double_false();
+  test_card_operator_suit();
+  test_card_operator_value();
   END_TEST("test_card");
 }
 
@@ -60,6 +62,7 @@ void test_remove(){
   START_TEST("test_remove");
   test_remove_center_card();
   test_remove_first_card();
+  test_remove_last_card();
   END_TEST("test_remove");
 }
 
@@ -83,6 +86,20 @@ void test_card_operator_double_false(){
   Card c2("h", "q");
   bool result = (c1 == c2);
   assertEqualsBool(false, result, "test_card_operator_double_false");
+}
+
+void test_card_operator_suit(){
+  Card c1("s","a");
+  Card c2("d","a");
+  bool result = (c1 == c2);
+  assertEqualsBool(false, result, "test_card_operator_suit");
+}
+
+void test_card_operator_value(){
+  Card c1("s","a");
+  Card c2("s","j");
+  bool result = (c1 == c2);
+  assertEqualsBool(false, result, "test_card_operator_value");
 }
 
 // tests << overload on card and card list
@@ -145,6 +162,7 @@ void test_destructor_clear(){
   cout << "    RUN IN Valgrind FOR Destructor    ";
 }
 
+// Tests remove function
 void test_remove_center_card(){
   string testname = "Case 1: removing center card\n";
   Card c1("s", "a");
@@ -156,7 +174,7 @@ void test_remove_center_card(){
   hand1.append(c3);
   cout << testname << "BEFORE: \n" << hand1;
   hand1.remove(2);
-  cout << "AFTER: \n" <<hand1 << endl;
+  cout << "AFTER: \n" << hand1;
 }
 
 void test_remove_first_card(){
@@ -170,9 +188,24 @@ void test_remove_first_card(){
   hand1.append(c3);
   cout << testname << "BEFORE: \n" << hand1;
   hand1.remove(1);
-  cout << "AFTER: \n" << hand1 << endl;
+  cout << "AFTER: \n" << hand1;
 }
 
+void test_remove_last_card(){
+  string testname = "Case 3: remove the last card\n";
+  Card c1("s","a");
+  Card c2("h","q");
+  Card c3("c","k");
+  CardList hand1;
+  hand1.append(c1);
+  hand1.append(c2);
+  hand1.append(c3);
+  cout << testname << "BEFORE: \n" << hand1;
+  hand1.remove(3);
+  cout << "AFTER: \n" << hand1;
+}
+
+// Tests for finding card
 void test_card_found(){
   Card c1("s", "a");
   Card c2("h", "q");

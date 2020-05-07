@@ -31,6 +31,8 @@ void test_append_single_element_list();
 // Test cases for card boolean
 void test_card_operator_double_true();
 void test_card_operator_double_false();
+void test_card_operator_suit();
+void test_card_operator_value();
 
 // Tests for card and card list cout
 void test_card_cout();
@@ -42,6 +44,7 @@ void test_destructor_clear();
 // Test for removing card from deck
 void test_remove_center_card();
 void test_remove_first_card();
+void test_remove_last_card();
 
 // Test for finding card
 void test_card_found();
