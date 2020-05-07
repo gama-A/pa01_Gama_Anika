@@ -19,16 +19,19 @@ void test_card();
 void test_destructor();    // 1 test
 void test_remove();        // 2 tests
 void test_search();        // 2 tests: 1 with card in list and one without
-/*
-void test_createList();
-*/
-void test_card_bool();
+
+
+// Test for creating CardList
+void test_constructor_empty();
 
 void test_append_empty_list();              // A test case for append
 void test_append_single_element_list();     // Tests cases should be independent,
                                             // small, fast, orthogonal
 void test_equal_empty_list();
-void test_card_operator_double_equal();
+
+// Test cases for card boolean
+void test_card_operator_double_true();
+void test_card_operator_double_false();
 
 void START_TEST(string testname){
   cout<<"Start "<<testname<<endl;
@@ -59,6 +62,14 @@ void assertEqualsCard(Card *expected, Card *actual, string testDescription){
     cout<<"PASSED " << endl;
   } else {
     cout<< "  FAILED: "<< testDescription << endl <<"   Expected: "<< expected << " Actual: " << actual << endl;
+  }
+}
+
+void assertEqualsBool(bool expected, bool result, string testDescription){
+  if (expecte == actual) {
+    cout<<"PASSED"<<endl;
+  } else {
+    cout<<"   FAILED: "<< testDescription << endl << "   Expected: "<< expected << " Actual: " << actual << endl;
   }
 }
 

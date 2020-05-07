@@ -8,7 +8,7 @@
 
 using std::cout;
 // Constructor (card)
-Card::Card(char s, char v){
+Card::Card(string s, string v){
     suit = s;
     value = v;
     next = NULL;
@@ -16,7 +16,7 @@ Card::Card(char s, char v){
 
 // Card equality operator
 bool Card::operator==(Card const& a){
-    if((a.suit == this.suit) && (a.value == this.value)){
+    if((a.suit == this->suit) && (a.value == this->value)){
         return true;
     }
     return false;
@@ -33,10 +33,10 @@ CardList::~CardList(){
 }
 
 // returns true if card is in the list, false if not
-bool CardList::findCard(Card* c) {
+bool CardList::findCard(Card& c) {
     Card *p = deck;
     while(p){
-        if (p == c){
+        if (*p == c){
             return true;
         }
         p = p->next;
@@ -46,41 +46,45 @@ bool CardList::findCard(Card* c) {
 
 // appends card to the card hand
 void CardList::append(Card& c) {
-    Card *p = deck;
-    if(!p) {
-        Card add = new Card(c.suit, c.value);
-        p = add;
-    }
-    else {
+    Card *p;
+    p = deck;
+    while(p) {
         p = p->next;
-        p.append(c);
     }
+    Card* n = new Card(c.suit, c.value);
+    p = n;
 }
 
 // removes card in the list
-void CardList::remove(Card* c) {
-    Card *p = deck;
-    Card *q = deck;
-    if(p == c){
-        if(p->next != NULL){
-            delete p;
-            deck = q;
-            return;
-        }else {
+void CardList::remove(Card& c) {
+    Card *p, *q;
+    p = deck;
+    q = deck;
+    while(!(*p == c)){
+        p = p->next;
+    }
+    if(p->next == NULL){
+        delete p;
+        return;
+    }else {
+        if(p == deck){
             q = q->next;
             delete p;
             deck = q;
-            return;
+        }else {
+            while(q->next != p){
+                q = q->next;
+            }
+            q->next = p->next;
+            delete p;
         }
-    }else {
-        p = p->next.remove(c);
     }
 }
 
 // clears list of cards
-void clear() {
-    Card *p, *q;
-    p = deck;
+void CardList::clear() {
+    Card *p = deck;
+    Card *q;
     q = p;
     while(p) {
         p = p->next;

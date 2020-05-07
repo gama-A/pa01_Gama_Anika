@@ -12,10 +12,10 @@ using namespace std;
 
 class Card {
 public:
-    char suit;
-    char value;
+    string suit;
+    string value;
     Card *next;
-    Card(char s, char v);
+    Card(string s, string v);
     // Card constructor
 
     bool operator==(Card const& a);
@@ -37,20 +37,19 @@ public:
     ~CardList();
     // card hand destructor
 
-    bool findCard(Card* c);
+    bool findCard(Card& c);
     // returns true if card exists in deck, false if not
 
-    void append(Card* c);
+    void append(Card& c);
     // add card to the end hand of the player
     // If the card hand is empty the card is added first
 
-    void remove(Card* c);
+    void remove(Card& c);
     // removes card in the list, used with function find Card
 
     void clear();
     // clears list at the end
     
-private:
     Card *deck;
 };
 
