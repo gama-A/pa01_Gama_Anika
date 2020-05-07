@@ -51,11 +51,16 @@ int CardList::findCard(Card& c) {
 void CardList::append(Card& c) {
     Card *p;
     p = deck;
-    while(p) {
+    Card* n = new Card(c.suit, c.value);
+    if(!p){
+        deck = n;
+        return;
+    }
+    while(p->next){
         p = p->next;
     }
-    Card* n = new Card(c.suit, c.value);
-    p = n;
+    p->next = n;
+    return;
 }
 
 // removes card in the list
