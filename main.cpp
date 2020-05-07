@@ -31,13 +31,25 @@ int main(int argv, char** argc){
   // Read each file and store cards
   while (getline (cardFile1, line) && (line.length() > 0)){
       CardList player1;
+      Card add(line[0],line[2]);
+      player1.append(add);
+      player1.setName("Alice");
   }
   cardFile1.close();
 
   while (getline (cardFile2, line) && (line.length() > 0)){
       CardList player2;
+      Card add(line[0],line[2]);
+      player2.append(add);
+      player2.setName("Bob");
   }
   cardFile2.close();
+
+  int gameStatus = 2;
+  while (gameStatus > 0){
+      // STUB
+  }
+
 
   return 0;
 }
