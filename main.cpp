@@ -53,8 +53,8 @@ int main(int argv, char** argc){
   int gameStatus = 2;
   int turnCounter = 0;
   int result;
+  Card *p1, *p2;
   while (gameStatus > 0){
-      Card *p1, *p2;
       result = 0;
       if((turnCounter % 2)== 0){
           p1 = player1.getCardDeck();
