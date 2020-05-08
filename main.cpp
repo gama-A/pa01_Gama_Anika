@@ -54,15 +54,16 @@ int main(int argv, char** argc){
   int turnCounter = 0;
   int result;
   while (gameStatus > 0){
-      Card *p1, *p2;
+      Card *p1, *p2, *temp;
       result = 0;
       if((turnCounter % 2)== 0){
           p1 = player1.getCardDeck();
-          for(p1; p1->next != NULL; p1 = p1->next){
+          while(p1){
               result = player2.findCard(*p1);
               if(result != 0){
                   break;
               }
+              p1 = p1->next;
           }
           if(result != 0){
               player2.remove(result);
@@ -74,11 +75,12 @@ int main(int argv, char** argc){
       }
       else {
           p2 = player2.getCardDeck();
-          for(p2; p2->next != NULL; p2 = p2->next){
+          while(p2){
               result = player1.findCard(*p2);
               if(result != 0){
                   break;
               }
+              p2 = p2->next;
           }
           if(result != 0){
               player1.remove(result);
