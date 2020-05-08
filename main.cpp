@@ -1,3 +1,5 @@
+// Gama Aristondo and Anika
+
 #include <iostream>
 #include <fstream>
 #include <string>
