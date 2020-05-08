@@ -54,7 +54,7 @@ int main(int argv, char** argc){
   int turnCounter = 0;
   int result;
   while (gameStatus > 0){
-      Card *p1, *p2, *temp;
+      Card *p1, *p2;
       result = 0;
       if((turnCounter % 2)== 0){
           p1 = player1.getCardDeck();
